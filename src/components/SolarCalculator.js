@@ -105,12 +105,14 @@ const SolarCalculator = () => {
                 type="number"
                 value={monthlyConsumption}
                 onChange={(e) => {
-                  const value = parseFloat(e.target.value);
-                  if (value >= 0) {
+                  const value = e.target.value;
+
+                  // Allow empty input or numeric values
+                  if (value === "" || !isNaN(value)) {
                     setMonthlyConsumption(value);
                     setError("");
                   } else {
-                    setError("Monthly consumption must be greater than 0.");
+                    setError("Monthly consumption must be a number.");
                   }
                 }}
                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
